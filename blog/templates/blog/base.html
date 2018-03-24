@@ -17,10 +17,28 @@
 </head>
 
 <body>
-    
-    {% block content %} {% endblock %}
+    <div class="container-fluid">
+        <div class="row">
 
-</div>
+
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul>
+                        <li>Home</li>
+                        <li>All Blogs</li>
+                        <li>All Bloggers</li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                {% block content %} {% endblock %}
+            </main>
+
+
+        </div>
+    </div>
+
 
 <!-- <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>

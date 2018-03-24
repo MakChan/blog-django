@@ -8,6 +8,8 @@ class Post(models.Model) :
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name='posts', on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-created_at']
 
 class Comment(models.Model) :
     content = models.TextField(max_length=300)

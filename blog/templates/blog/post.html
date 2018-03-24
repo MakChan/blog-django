@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% load humanize %} 
+{% block content %} 
+  
+{% if post %}
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        {{post.title}}
+        <br> at {{ post.created_at|naturaltime}} by {{ post.created_by}}
+        <br> {{ post.content}} 
+    </div>
+{% endif %} 
+
+Comments
+{% if comments %}
+<div class="my-3  ml-5 p-3 bg-white rounded box-shadow">
+    {% for comment in comments %}
+        {{ comment.content}}
+        at {{ comment.created_at|naturaltime}}
+        by {{ comment.created_by}}
+    {% endfor %}
+
+</div>
+{% endif %}
+
+
+{% endblock %}

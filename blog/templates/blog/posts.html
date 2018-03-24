@@ -1,0 +1,27 @@
+
+{% extends 'blog/base.html' %}
+{% load humanize %}
+{% block content %}
+
+
+
+
+{% if posts %}
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+    {% for post in posts %}
+        {{ post.title}}<br>
+        at {{ post.created_at|naturaltime}}
+        by {{ post.created_by}}<br>
+        {{ post.content}}
+    {% endfor %}
+    </div>
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}
