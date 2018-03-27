@@ -1,21 +1,18 @@
-
 {% extends 'blog/base.html' %}
 {% load humanize %}
-{% block content %}
+ 
+{% block content %} 
 
 
-
-
-{% if posts %}
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-    {% for post in posts %}
-        {{ post.title}}<br>
-        at {{ post.created_at|naturaltime}}
-        by {{ post.created_by}}<br>
-        {{ post.content}}
+{% if users %}
+<div class="my-3 p-3 bg-white rounded box-shadow">
+    {% for user in users %} 
+    <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
+     {{ user.bio }}
     {% endfor %}
-    </div>
-{% endif %}
+</div>
+{% endif %} 
+
          {% if is_paginated %}
         <nav aria-label="Topics pagination" class="my-4">
             <ul class="pagination justify-content-center">
@@ -52,9 +49,5 @@
         {% endif %}
 
 
-
-
-
-
-
 {% endblock %}
+

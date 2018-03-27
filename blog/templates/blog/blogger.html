@@ -1,21 +1,19 @@
-
 {% extends 'blog/base.html' %}
 {% load humanize %}
-{% block content %}
+ 
+ 
+{% block content %} 
+ 
+Posts by {{ user}}
 
-
-
-
+ 
 {% if posts %}
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-    {% for post in posts %}
-        {{ post.title}}<br>
-        at {{ post.created_at|naturaltime}}
-        by {{ post.created_by}}<br>
-        {{ post.content}}
-    {% endfor %}
-    </div>
-{% endif %}
+<div class="my-3 p-3 bg-white rounded box-shadow">
+    {% for post in posts %} {{ post.title}}
+    <br> at {{ post.created_at|naturaltime}} by {{ post.created_by}}
+    <br> {{ post.content}} {% endfor %}
+</div>
+{% endif %} 
          {% if is_paginated %}
         <nav aria-label="Topics pagination" class="my-4">
             <ul class="pagination justify-content-center">
@@ -51,10 +49,5 @@
         </nav>
         {% endif %}
 
-
-
-
-
-
-
 {% endblock %}
+

@@ -24,9 +24,9 @@
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul>
-                        <li>Home</li>
-                        <li>All Blogs</li>
-                        <li>All Bloggers</li>
+                        <li><a href="{% url 'blog:home' %}">Home</a></li>
+                        <li><a href="{% url 'blog:home' %}">All Blogs</a></li>
+                        <li><a href="{% url 'blog:bloggers' %}">All Bloggers</a></li>
                     </ul>
                 </div>
             </nav>
