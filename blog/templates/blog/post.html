@@ -6,7 +6,7 @@
     <div class="my-3 p-3 bg-white rounded box-shadow">
         {{post.title}}
         <br> at {{ post.created_at|naturaltime}} by {{ post.created_by}}
-        <br> {{ post.content}} 
+        <br> {{ post.get_post_as_markdown}} 
     </div>
 {% endif %} 
 

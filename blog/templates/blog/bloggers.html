@@ -5,12 +5,12 @@
 
 
 {% if users %}
-<div class="my-3 p-3 bg-white rounded box-shadow">
-    {% for user in users %} 
-    <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
-     {{ user.bio }}
-    {% endfor %}
-</div>
+     {% for user in users %}
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
+        {{ user.bio }}
+    </div>
+     {% endfor %}
 {% endif %} 
 
          {% if is_paginated %}

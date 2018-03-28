@@ -7,15 +7,15 @@
 
 
 {% if posts %}
+     {% for post in posts %}
     <div class="my-3 p-3 bg-white rounded box-shadow">
-    {% for post in posts %}
-        {{ post.title}}<br>
+        <a href="{% url 'blog:blog' post.id %}">{{ post.title}}</a><br>
         at {{ post.created_at|naturaltime}}
-        by {{ post.created_by}}<br>
-        {{ post.content}}
-    {% endfor %}
+        by <a href="{% url 'blog:blogger' post.created_by %}">{{ post.created_by}}</a><br>
     </div>
+     {% endfor %}
 {% endif %}
+
          {% if is_paginated %}
         <nav aria-label="Topics pagination" class="my-4">
             <ul class="pagination justify-content-center">
