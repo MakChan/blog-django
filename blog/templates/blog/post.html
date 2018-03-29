@@ -4,21 +4,27 @@
   
 {% if post %}
     <div class="my-3 p-3 bg-white rounded box-shadow">
-        {{post.title}}
-        <br> at {{ post.created_at|naturaltime}} by {{ post.created_by}}
-        <br> {{ post.get_post_as_markdown}} 
+        <div><h3>{{post.title}}</h3></div>
+        <div class="text-muted"> posted {{ post.created_at|naturaltime}} by 
+            <a href="{% url 'blog:blogger' post.created_by %}">{{ post.created_by}}</a>
+        </div>
+
+        <div class="mt-4"> {{ post.get_post_as_markdown}} </div>
     </div>
 {% endif %} 
 
-Comments
-{% if comments %}
-<div class="my-3  ml-5 p-3 bg-white rounded box-shadow">
-    {% for comment in comments %}
-        {{ comment.content}}
-        at {{ comment.created_at|naturaltime}}
-        by {{ comment.created_by}}
-    {% endfor %}
 
+{% if comments %}
+<div class="my-3 p-4 bg-white rounded box-shadow">
+    <h4>Comments</h4>
+    {% for comment in comments %}
+        <div>
+            <hr>
+            <strong>{{ comment.created_by}}</strong>
+            <span>{{comment.content}}</span>
+            <small class="text-muted">{{ comment.created_at|naturaltime}}</small>
+        </div>
+     {% endfor %}
 </div>
 {% endif %}
 

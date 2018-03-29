@@ -3,7 +3,7 @@ from django.views.generic import ListView, TemplateView
 from .models import Post, Comment
 from .forms import NewPostForm
 from accounts.models import User
-
+from .decorators import blogger_required
 class HomeView(ListView):
 	model = Post
 	context_object_name = 'posts'
@@ -28,7 +28,9 @@ class UserView(ListView):
 	paginate_by = 10
 
 	def get_context_data(self, **kwargs):
-		return super().get_context_data(**kwargs)
+		context = super().get_context_data(**kwargs)
+		context['username'] = User.objects.get(username=self.kwargs['username'])
+		return context
 
 	def get_queryset(self):
 		self.user = get_object_or_404(User, username=self.kwargs['username'])
@@ -41,7 +43,7 @@ class UserListView(ListView):
 	paginate_by = 10
 
 
-# @staff_member_required
+@blogger_required
 def NewPostView(request):
 	if request.method == 'POST':
 		form = NewPostForm(request.POST)

@@ -28,6 +28,29 @@
                         <li><a href="{% url 'blog:home' %}">All Blogs</a></li>
                         <li><a href="{% url 'blog:bloggers' %}">All Bloggers</a></li>
                     </ul>
+
+                    <ul>
+                        {% if user.is_authenticated %} 
+                            {% if user.is_blogger %}
+                                <li>
+                                    <a href="{% url 'blog:new'%}">New Blog</a>
+                                </li>
+                            {% endif %}
+
+                            <li>
+                                <a href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'accounts:logout' %}">Log out</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{% url 'accounts:login' %}">Log In</a>
+                            </li>
+
+                        {% endif %}
+
+                    </ul>
                 </div>
             </nav>
 
