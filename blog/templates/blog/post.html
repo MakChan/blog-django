@@ -16,15 +16,34 @@
 
 {% if comments %}
 <div class="my-3 p-4 bg-white rounded box-shadow">
-    <h4>Comments</h4>
+    <h4 class='comment-title'>Comments</h4>
+    {% if user.is_authenticated %}
+    <a href="{% url 'blog:comment' post.id %}">
+    <button class='btn btn-light comment-btn'>New Comment</button>
+    </a>
+    {% endif %}
     {% for comment in comments %}
         <div>
             <hr>
-            <strong>{{ comment.created_by}}</strong>
+            
+            {% if comment.created_by.is_blogger %}
+            <a href="{% url 'blog:blogger' post.created_by %}"><strong>{{ comment.created_by }}</strong></a>
+            {% else %}
+            <strong>{{ comment.created_by }}</strong>
+            {% endif %}
+
             <span>{{comment.content}}</span>
             <small class="text-muted">{{ comment.created_at|naturaltime}}</small>
         </div>
      {% endfor %}
+</div>
+{% else %}
+<div class="my-3 p-4 bg-white rounded box-shadow">
+    <h4 class='comment-title'>Comments</h4>
+    <a href="{% url 'blog:comment' post.id %}">
+        <button class='btn btn-light comment-btn'>New Comment</button>
+    </a>
+
 </div>
 {% endif %}
 

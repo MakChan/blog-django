@@ -2,3 +2,12 @@ body {
   background-color: #f8f9fa;
 }
 
+
+.comment-title {
+  display: inline-block
+}
+
+.comment-btn {
+  margin-left: 50px;
+  margin-bottom: 10px;
+}

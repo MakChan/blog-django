@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, TemplateView
 from .models import Post, Comment
-from .forms import NewPostForm
+from .forms import NewPostForm, NewCommentForm
 from accounts.models import User
 from .decorators import blogger_required
+from django.contrib.auth.decorators import login_required
+
+
+
 class HomeView(ListView):
 	model = Post
 	context_object_name = 'posts'
@@ -55,3 +59,19 @@ def NewPostView(request):
 	else:
 		form = NewPostForm()
 	return render(request, 'blog/new.html', {'form': form})
+
+
+@login_required
+def NewCommentView(request, pk):
+	post = Post.objects.get(pk=pk)
+	if request.method == 'POST':
+		form = NewCommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.created_by = request.user
+			comment.post = post
+			comment.save()
+			return redirect('blog:blog', pk=pk)
+	else:
+		form = NewCommentForm()
+	return render(request, 'blog/comment.html', {'form': form, 'post': post})

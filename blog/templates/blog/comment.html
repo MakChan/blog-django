@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load humanize %} 
+{% load widget_tweaks %}
+
+{% block content %}
+<h5>Post your comment for: <a href="{% url 'blog:blog' post.id %}">{{ post.title }}</a></h5>
+<br>
+<!-- <a href="{% url 'blog:blog' post.id %}">
+    <button class='btn btn-dark'>Back</button>
+</a> -->
+
+<form method="post" novalidate class="">
+    {% csrf_token %} {% include 'blog/form.html' %}
+    <button type="submit" class="btn btn-success">Post</button>
+</form>
+
+
+
+{% endblock %}
+
