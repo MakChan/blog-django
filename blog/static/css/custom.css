@@ -1,13 +1,36 @@
 body {
   background-color: #f8f9fa;
+    /* background-color:white; */
 }
 
-
+a {
+  color: #0060c7 !important;
+}
 .comment-title {
   display: inline-block
 }
 
 .comment-btn {
   margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.navbar-links a {
+  display: block;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.signin-form {
+  width: 40%;
+  margin: 40px auto;
+}
+
+#id_username {
+  padding: 10px;
+  margin-bottom: -1px;
+}
+#id_password {
+  padding: 10px;
   margin-bottom: 10px;
 }
