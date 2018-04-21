@@ -11,7 +11,15 @@
     <div class="my-3 p-3 bg-white rounded bg-light">
         <a href="{% url 'blog:blog' post.id %}">{{ post.title}}</a><br>
         posted {{ post.created_at|naturaltime}}
-        by <a href="{% url 'blog:blogger' post.created_by %}">{{ post.created_by}}</a><br>
+        by <a href="{% url 'blog:blogger' post.created_by %}">{{ post.created_by}}</a> 
+        {% if post.comments.count %},
+            {% if post.comments.count == 1 %}
+                {{ post.comments.count }} comment
+            {% else %}
+                {{ post.comments.count }} comments
+            {% endif %}
+        {% endif %}
+        <br>
     </div>
      {% endfor %}
 {% endif %}

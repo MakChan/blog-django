@@ -1,10 +1,11 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #f5f5f6;
     /* background-color:white; */
+  color: #484848 ;
 }
 
 a {
-  color: #0060c7 !important;
+  color: #4a148c !important;
 }
 .comment-title {
   display: inline-block
@@ -17,12 +18,23 @@ a {
 
 .navbar-links a {
   display: block;
-
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-bottom: 2px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  
 }
 
+.navbar-links a:hover {
+  
+border-left-color: #4a148c;
+border-right-color: #4a148c;
+
+}
+
+
 .signin-form {
-  width: 40%;
+  width: 30%;
   margin: 40px auto;
 }
 
@@ -33,4 +45,13 @@ a {
 #id_password {
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.post-card {
+  border-radius: 10px;
+    /* height: 100%; */
+    background: linear-gradient(#FFC0CB 90px, #fff 90px);
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);  
+  /* box-shadow: 0 0 6px 3px rgba(0,0,0,.15); */
 }

@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, DetailView
 from .models import Post, Comment
 from .forms import NewPostForm, NewCommentForm
 from accounts.models import User
 from .decorators import blogger_required
 from django.contrib.auth.decorators import login_required
-
+# from django.contrib.auth import get_user_model
+# User = get_user_model()
 
 
 class HomeView(ListView):
@@ -14,16 +15,11 @@ class HomeView(ListView):
 	template_name = 'blog/posts.html'
 	paginate_by = 10
 
-
-class PostView(TemplateView):
+class PostView(DetailView):
+	model = Post
+	context_object_name = 'post'
 	template_name = 'blog/post.html'
 	
-	def get_context_data(self, **kwargs) :
-		context = super().get_context_data(**kwargs)
-		context['post'] = Post.objects.get(pk = self.kwargs['pk'])	 
-		context['comments'] = Comment.objects.filter(post = self.kwargs['pk'])
-		return context
-
 
 class UserView(ListView):
 	model = Post
@@ -61,17 +57,21 @@ def NewPostView(request):
 	return render(request, 'blog/new.html', {'form': form})
 
 
-@login_required
+
 def NewCommentView(request, pk):
-	post = Post.objects.get(pk=pk)
-	if request.method == 'POST':
-		form = NewCommentForm(request.POST)
-		if form.is_valid():
-			comment = form.save(commit=False)
-			comment.created_by = request.user
-			comment.post = post
-			comment.save()
-			return redirect('blog:blog', pk=pk)
+	if request.user.is_authenticated :
+		post = Post.objects.get(pk=pk)
+		if request.method == 'POST':
+			form = NewCommentForm(request.POST)
+			if form.is_valid():
+				comment = form.save(commit=False)
+				comment.created_by = request.user
+				comment.post = post
+				comment.save()
+				return redirect('blog:blog', pk=pk)
+		else:
+			form = NewCommentForm()
+		return render(request, 'blog/comment.html', {'form': form, 'post': post})
 	else:
-		form = NewCommentForm()
-	return render(request, 'blog/comment.html', {'form': form, 'post': post})
+		return redirect('accounts:login')
+

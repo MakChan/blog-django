@@ -21,17 +21,17 @@
         <div class="row">
             <nav class="col-md-2 d-none d-md-block pt-5 px-5">
                 <div class="position-fixed navbar-links">
-                       <a class="btn bg-white mb-2 p-2 rounded-0" href="{% url 'blog:home' %}">Home</a>
-                       <a class="btn shadow-lg bg-white mb-2 p-2 rounded-0" href="{% url 'blog:home' %}">All Blogs</a>
-                       <a class="btn shadow-lg bg-white mb-2 p-2 rounded-0" href="{% url 'blog:bloggers' %}">All Bloggers</a>    
+                       <a class="btn bg-white mb-2 p-2" href="{% url 'blog:home' %}">Home</a>
+                       <a class="btn shadow-lg bg-white mb-2 p-2" href="{% url 'blog:home' %}">All Blogs</a>
+                       <a class="btn shadow-lg bg-white mb-2 p-2" href="{% url 'blog:bloggers' %}">All Bloggers</a>    
                         {% if user.is_authenticated %} 
                             {% if user.is_blogger %}                               
-                                <a class="btn shadow-lg bg-white mb-2 p-2 rounded-0" href="{% url 'blog:new'%}">New</a>
+                                <a class="btn shadow-lg bg-white mb-2 p-2" href="{% url 'blog:new'%}">New</a>
                             {% endif %}                           
-                                <a class="btn shadow-lg bg-white mb-2 p-2 rounded-0" href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
-                                <a class="btn shadow-lg bg-white mb-2 p-2 rounded-0" href="{% url 'accounts:logout' %}">Log out</a>     
+                                <a class="btn shadow-lg bg-white mb-2 p-2" href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
+                                <a class="btn shadow-lg bg-white mb-2 p-2" href="{% url 'accounts:logout' %}">Log out</a>     
                         {% else %}
-                                <a class="btn shadow-lg bg-white mb-2 p-2 rounded-0" href="{% url 'accounts:login' %}">Log In</a>
+                                <a class="btn shadow-lg bg-white mb-2 p-2" href="{% url 'accounts:login' %}">Log In</a>
                         {% endif %}
                 </div>
             </nav>
