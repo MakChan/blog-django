@@ -6,10 +6,12 @@
 
 {% if users %}
      {% for user in users %}
-    <div class="my-3 p-3 bg-white rounded box-shadow">
-        <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
-        {{ user.bio }}
-    </div>
+        {% if user.is_blogger %}
+            <div class="m-5 p-3 bg-white blogger-card">
+                <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
+                {{ user.bio }}
+            </div>
+        {% endif %}
      {% endfor %}
 {% endif %} 
 

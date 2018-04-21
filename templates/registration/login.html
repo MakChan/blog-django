@@ -17,7 +17,7 @@
     {% endif %}
 {% endif %}
 
-<form method="post" class='signin-form text-center' action="{% url 'accounts:login' %}">
+<form method="post" class='text-center bg-white p-5 m-5 signin-form' action="{% url 'accounts:login' %}">
 {% csrf_token %}
 
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -26,10 +26,10 @@
     <label for="id_password" class="sr-only">Password</label>
     <input type="password" name="password" id="id_password" class="form-control rounded-0" placeholder="Password" required>
 
-    <button class="btn btn-lg btn-primary btn-block rounded-0"  value="Login" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-block rounded-0"  value="Login" type="submit">Sign in</button>
     <input type="hidden" name="next" value="{{ next }}" />
+    <p class="mt-4 mb-0"><a href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
 </form>
 
-<p class="text-center"><a href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
 
 {% endblock %}
