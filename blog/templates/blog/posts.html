@@ -4,12 +4,10 @@
 {% block content %}
 
 
-
-
 {% if posts %}
      {% for post in posts %}
-    <div class="my-3 mx-5 p-3 bg-white posts-card">
-        <a href="{% url 'blog:blog' post.id %}">{{ post.title}}</a><br>
+    <div class="mb-4 mx-auto p-3 bg-white posts-card">
+        <a href="{% url 'blog:blog' post.id %}" class="h5">{{ post.title}}</a><br>
         posted {{ post.created_at|naturaltime}}
         by <a href="{% url 'blog:blogger' post.created_by %}">{{ post.created_by}}</a> 
         {% if post.comments.count %},
@@ -24,7 +22,7 @@
      {% endfor %}
 {% endif %}
 
-         {% if is_paginated %}
+    {% if is_paginated %}
         <nav aria-label="Topics pagination" class="my-4">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
@@ -32,7 +30,7 @@
                     <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 </li>
                 {% else %}
-                <li class="page-item disabled">
+                <li class="page-item disabled rounded-left">
                     <span class="page-link">Previous</span>
                 </li>
                 {% endif %} {% for page_num in paginator.page_range %} {% if page_obj.number == page_num %}
@@ -51,13 +49,13 @@
                     <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
                 </li>
                 {% else %}
-                <li class="page-item disabled">
+                <li class="page-item disabled rounded-right">
                     <span class="page-link">Next</span>
                 </li>
                 {% endif %}
             </ul>
         </nav>
-        {% endif %}
+    {% endif %}
 
 
 

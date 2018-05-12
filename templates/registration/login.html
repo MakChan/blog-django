@@ -4,32 +4,32 @@
 
 
 
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
-{% endif %}
 
-<form method="post" class='text-center bg-white p-5 m-5 signin-form' action="{% url 'accounts:login' %}">
-{% csrf_token %}
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="id_username" class="sr-only">Username</label>
-    <input type="text" name="username" id="id_username" class="form-control rounded-0" placeholder="Username" required autofocus>
-    <label for="id_password" class="sr-only">Password</label>
-    <input type="password" name="password" id="id_password" class="form-control rounded-0" placeholder="Password" required>
+    <form method="post" class='text-center bg-white p-5 mx-auto signin-form' action="{% url 'accounts:login' %}">
+        {% csrf_token %}
 
-    <button class="btn btn-lg btn-block rounded-0"  value="Login" type="submit">Sign in</button>
-    <input type="hidden" name="next" value="{{ next }}" />
-    <p class="mt-4 mb-0"><a href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
-</form>
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="id_username" class="sr-only">Username</label>
+        <input type="text" name="username" id="id_username" class="form-control rounded-0" placeholder="Username" required autofocus>
+        <label for="id_password" class="sr-only">Password</label>
+        <input type="password" name="password" id="id_password" class="form-control rounded-0" placeholder="Password" required>
+
+        <button class="btn btn-lg btn-block rounded-0"  value="Login" type="submit">Sign in</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p class="mt-4 mb-0"><a href="{% url 'accounts:password_reset' %}">Lost password?</a></p>
+    </form>
 
 
 {% endblock %}

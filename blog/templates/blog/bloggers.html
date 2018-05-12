@@ -4,18 +4,18 @@
 {% block content %} 
 
 
-{% if users %}
-     {% for user in users %}
-        {% if user.is_blogger %}
-            <div class="m-5 p-3 bg-white blogger-card">
-                <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
-                {{ user.bio }}
-            </div>
-        {% endif %}
-     {% endfor %}
-{% endif %} 
+    {% if users %}
+        {% for user in users %}
+            {% if user.is_blogger %}
+                <div class="mx-auto mb-4 p-3 bg-white blogger-card">
+                    <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
+                    {{ user.bio }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %} 
 
-         {% if is_paginated %}
+    {% if is_paginated %}
         <nav aria-label="Topics pagination" class="my-4">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
@@ -48,7 +48,7 @@
                 {% endif %}
             </ul>
         </nav>
-        {% endif %}
+    {% endif %}
 
 
 {% endblock %}

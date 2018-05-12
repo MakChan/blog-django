@@ -10,19 +10,24 @@
 
     <title>{% block title %}Mini-Blog{% endblock %}</title>
 
+
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}"/>
+
     {% block stylesheet %}{% endblock %}
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row justify-content">
-            <nav class="col d-none d-md-block m-5">
-                <div class="position-fixed navbar-links bg-white p-5 nav-card">
-                       <a class="btn bg-white mb-3 p-2 mt-3" href="{% url 'blog:home' %}">Home</a>
+            <nav class="col bg-white side-nav">
+                <div class="navbar-links mx-auto mt-5">
+                       <a class="btn bg-white mb-3 p-2 mt-3 btn-1" href="{% url 'blog:home' %}">Home</a>
                        <a class="btn bg-white mb-3 p-2" href="{% url 'blog:home' %}">All Blogs</a>
                        <a class="btn bg-white mb-3 p-2" href="{% url 'blog:bloggers' %}">All Bloggers</a>    
                         {% if user.is_authenticated %} 
@@ -30,14 +35,14 @@
                                 <a class="btn bg-white mb-3 p-2" href="{% url 'blog:new'%}">New</a>
                             {% endif %}                           
                                 <a class="btn bg-white mb-3 p-2" href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
-                                <a class="btn bg-white mb-3 p-2" href="{% url 'accounts:logout' %}">Log out</a>     
+                                <a class="btn bg-white mb-3 p-2 btn-n" href="{% url 'accounts:logout' %}">Log out</a>     
                             {% else %}
-                                <a class="btn bg-white mb-3 p-2" href="{% url 'accounts:login' %}">Log In</a>
+                                <a class="btn bg-white mb-3 p-2 btn-n" href="{% url 'accounts:login' %}">Log In</a>
                         {% endif %}
                 </div>
             </nav>
         
-            <main class="col-md-8 ml-sm-auto col-lg-9 pt-3 px-4">
+            <main class="col-md-9 ml-md-auto mt-5 mx-2 mx-md-5">
                 {% block content %} {% endblock %}
             </main>
         </div>        
