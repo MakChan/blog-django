@@ -1,0 +1,56 @@
+
+{% load humanize %} 
+
+
+{% if posts %}
+{% for post in posts %}
+<div class="mb-4 mx-auto p-3 bg-white posts-card">
+   <a href="{% url 'blog:blog' post.id %}" class="h5">{{ post.title}}</a><br>
+   posted {{ post.created_at|naturaltime}}
+   by <a href="{% url 'blog:blogger' post.created_by %}">{{ post.created_by}}</a> 
+   {% if post.comments.count %},
+       {% if post.comments.count == 1 %}
+           {{ post.comments.count }} comment
+       {% else %}
+           {{ post.comments.count }} comments
+       {% endif %}
+   {% endif %}
+   <br>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if is_paginated %}
+   <nav aria-label="Topics pagination" class="my-4">
+       <ul class="pagination justify-content-center">
+           {% if page_obj.has_previous %}
+           <li class="page-item">
+               <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+           </li>
+           {% else %}
+           <li class="page-item disabled rounded-left">
+               <span class="page-link">Previous</span>
+           </li>
+           {% endif %} {% for page_num in paginator.page_range %} {% if page_obj.number == page_num %}
+           <li class="page-item active">
+               <span class="page-link">
+                   {{ page_num }}
+                   <span class="sr-only">(current)</span>
+               </span>
+           </li>
+           {% else %}
+           <li class="page-item">
+               <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+           </li>
+           {% endif %} {% endfor %} {% if page_obj.has_next %}
+           <li class="page-item">
+               <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+           </li>
+           {% else %}
+           <li class="page-item disabled rounded-right">
+               <span class="page-link">Next</span>
+           </li>
+           {% endif %}
+       </ul>
+   </nav>
+{% endif %}

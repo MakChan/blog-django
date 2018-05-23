@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<form method="post" novalidate class="m-5 bg-white p-5 m-5 post-form">
+<form method="post" novalidate class="bg-white p-5 mx-5 mb-5 post-form">
     {% csrf_token %} {% include 'blog/form.html' %}
     <button type="submit" class="btn bg-white p-2 submit-btn">Post</button>
 </form>

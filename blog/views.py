@@ -75,3 +75,25 @@ def NewCommentView(request, pk):
 	else:
 		return redirect('accounts:login')
 
+
+
+class SearchResults(ListView) :
+	model = Post
+	context_object_name = 'posts'
+	template_name = 'blog/search-results.html'
+	paginate_by = 10
+
+	# def get_context_data(self, **kwargs):
+	# 	context = super().get_context_data(**kwargs)
+	# 	context['username'] = User.objects.get(username=self.kwargs['username'])
+	# 	return context
+
+	def get_queryset(self):
+		return Post.objects.filter(title__icontains = self.request.GET.get('query')).order_by('-created_at')
+
+	
+
+def SearchView(request) :
+	return render(request, 'blog/search.html')
+
+	

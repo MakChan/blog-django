@@ -29,14 +29,18 @@ a {
 
 .navbar-links a, .comment-btn, .submit-btn {
   display: block;
-  border-radius: 100px;
-  /* box-shadow: 0 0 0.2rem .1rem var(--main-color); */
+  border-radius: 8px;
   border: 3px solid transparent;
   background-color: var(--main-color) !important;
   color: white !important;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
 
 }
 
+
+.navbar-links a {
+  background-color: rgba(0,0,0,0.1) !important;
+}
 .navbar-links a:hover, .comment-btn:hover, .submit-btn:hover, .posts-card:hover, .blogger-card:hover  {
   box-shadow: 0 0 0.2rem .1rem var(--main-color);
   border-color: #fff
@@ -117,6 +121,32 @@ textarea:focus {
 .signin-form button {
   color: white;
   background-color: var(--main-color);
+}
+
+
+/* Search Page */
+
+.input-group {
+  width: 300px;
+  border-radius: 8px;
+  border: 2px solid #7636b5;  
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.input-group input, .input-group button {
+  border: 0;
+  border-radius: 8px;
+  color: #7636b5 !important;
+  background-color: #fff
+}
+
+.input-group input:focus, .input-group button:focus {
+  box-shadow: none;
+}
+
+
+#results {
+  margin-top: 50px;
 }
 
 
@@ -206,5 +236,9 @@ textarea:focus {
 
   .posts-card {
     width: 95%;
+  }
+
+  .input-group {
+    width: 85%;
   }
 }  

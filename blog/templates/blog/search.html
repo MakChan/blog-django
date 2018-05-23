@@ -1,0 +1,64 @@
+
+{% extends 'blog/base.html' %}
+{% load static %}s
+{% block content %}
+
+
+
+    <div class="input-group mx-auto w-30">
+        <input type="text" class="form-control" id="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn" type="button">
+              <img src="{% static 'img/search.svg' %}">
+          </button>
+        </div>
+    </div>
+
+    <div id="results"></div>
+
+
+{% endblock %}
+
+
+
+
+
+{% block javascript %}
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function()  {
+
+        function processResponse(data) {
+            if ( data.length <= 7) {
+                $('#results').html("<h5 class='text-center'>No matching posts.</h5>");
+            } else {
+                $('#results').html(data);
+            }
+        }
+
+
+        $("#search").keyup(function () {
+            var searchText = $(this).val().trim().toLowerCase();
+            if ( searchText.length >= 4 ) {
+
+                $.ajax({
+                    type: 'GET',
+                    url: "{% url 'blog:search-results' %}",
+                    data: {
+                        'query' : searchText,
+                    },
+                    dataType: 'html',
+                    success: processResponse
+                });
+            } else {
+                $('#results').html("");
+            }
+        });
+
+    })
+
+  </script>
+{% endblock %}
