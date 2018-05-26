@@ -1,18 +1,29 @@
 {% extends 'blog/base.html' %}
 {% load humanize %}
+{% load gravatar %}
  
 {% block content %} 
 
 
     {% if users %}
-        {% for user in users %}
-            {% if user.is_blogger %}
-                <div class="mx-auto mb-4 p-3 bg-white blogger-card">
-                    <a href="{% url 'blog:blogger' user %}">{{ user }}</a>
-                    {{ user.bio }}
+        <div class="row">
+            {% for user in users %}
+                {% if user.is_blogger %}
+                <div class="col">
+                    <div class="mx-auto mb-4 p-3 bg-white blogger-card">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="{{ user|gravatar }}" class="rounded"></div>
+                            <div class="col-md-7">
+                                <a href="{% url 'blog:blogger' user %}">{{ user }}</a><br>
+                                {{ user.bio }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            {% endif %}
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
     {% endif %} 
 
     {% if is_paginated %}

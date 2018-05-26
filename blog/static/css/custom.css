@@ -1,19 +1,18 @@
-
 :root {
-  --main-color: #7c43bd ;
+  --main-color: #7c43bd;
 }
 
 body {
   background-color: #f5f5f6;
-  color: #484848 ;
-  font-family: 'Nunito', sans-serif;
+  color: #484848;
+  font-family: "Nunito", sans-serif;
 }
 
 a {
   color: #4a148c !important;
 }
 .comment-title {
-  display: inline-block
+  display: inline-block;
 }
 
 .comment-btn {
@@ -27,29 +26,74 @@ a {
 }
 
 
-.navbar-links a, .comment-btn, .submit-btn {
+.comment-btn,
+.submit-btn {
   display: block;
   border-radius: 8px;
   border: 3px solid transparent;
   background-color: var(--main-color) !important;
   color: white !important;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
-
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-
-.navbar-links a {
-  background-color: rgba(0,0,0,0.1) !important;
+.navbar-links a {  
+  display: block;
+  border-radius: 6px;
+  color: white !important;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
-.navbar-links a:hover, .comment-btn:hover, .submit-btn:hover, .posts-card:hover, .blogger-card:hover  {
-  box-shadow: 0 0 0.2rem .1rem var(--main-color);
-  border-color: #fff
+
+.comment-btn:hover,
+.submit-btn:hover,
+.posts-card:hover,
+.blogger-card:hover {
+  box-shadow: 0 0 0.2rem 0.1rem var(--main-color);
+  border-color: #fff;
 }
 
-.navbar-links a:focus, .navbar-links a:active, .comment-btn:focus, .comment-btn:active {
+.navbar-links a:focus,
+.navbar-links a:active,
+.comment-btn:focus,
+.comment-btn:active {
   box-shadow: 0 0 0 0;
-  border-color: var(--main-color);
-} 
+  outline: 0;
+  border-color: transparent;
+}
+
+.special-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+.special-btn::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  background: #e31e3c;
+  background-image: -moz-linear-gradient(to left, #e31d3b 0%, #fc0390 100%);
+  background-image: -o-linear-gradient(to left, #e31d3b 0%, #fc0390 100%);
+  background-image: -webkit-linear-gradient(to left, #e31d3b 0%, #fc0390 100%);
+  background-image: linear-gradient(to left, #e31d3b 0%, #fc0390 100%);
+  z-index: -1;
+}
+
+.special-btn:hover::before {
+  width: 15%;
+}
+
 
 .comment-btn {
   display: inline-block;
@@ -70,7 +114,7 @@ a {
 
 textarea:focus {
   outline: 0;
-  box-shadow: 0 0 0 .2rem var(--main-color);
+  box-shadow: 0 0 0 0.2rem var(--main-color);
 }
 
 .posts-card {
@@ -82,8 +126,8 @@ textarea:focus {
 }
 .post-card {
   border-radius: 10px;
-  background: linear-gradient(#7c43bd 90px, #fff 90px);  
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background: linear-gradient(#7c43bd 90px, #fff 90px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .post-title {
@@ -94,12 +138,19 @@ textarea:focus {
 .post-content img {
   width: 70%;
   margin: 0 auto;
-  display: block
+  display: block;
 }
 
-.comment-card, .posts-card, .signin-form, .blogger-card, .comment-form, .post-form, .side-nav {
+.comment-card,
+.posts-card,
+.signin-form,
+.blogger-card,
+.comment-form,
+.post-form,
+.side-nav {
+  transition: all 0.3s ease-in;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .side-nav {
   background-color: #6605ab;
@@ -111,11 +162,16 @@ textarea:focus {
   border-radius: 0 !important;
 }
 .blogger-card {
-  width: 60%;
+  width: 80%;
 }
 
+.blogger-card img {
+  width: 100px;
+}
+
+
 .signin-form input:focus {
-  box-shadow: 0 0 0 .2rem var(--main-color);
+  box-shadow: 0 0 0 0.2rem var(--main-color);
 }
 
 .signin-form button {
@@ -123,36 +179,36 @@ textarea:focus {
   background-color: var(--main-color);
 }
 
-
 /* Search Page */
 
 .input-group {
   width: 300px;
   border-radius: 8px;
-  border: 2px solid #7636b5;  
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+  border: 2px solid #7636b5;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.input-group input, .input-group button {
+.input-group input,
+.input-group button {
   border: 0;
   border-radius: 8px;
   color: #7636b5 !important;
-  background-color: #fff
+  background-color: #fff;
 }
 
-.input-group input:focus, .input-group button:focus {
+.input-group input:focus,
+.input-group button:focus {
   box-shadow: none;
 }
-
 
 #results {
   margin-top: 50px;
 }
 
-
 /* Pagination */
 .page-item {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .page-item.active .page-link {
@@ -160,29 +216,24 @@ textarea:focus {
   border-color: var(--main-color);
 }
 
-.page-link:focus{
+.page-link:focus {
   outline: 0;
-  box-shadow: 0 0 0 .2rem var(--main-color);
+  box-shadow: 0 0 0 0.2rem var(--main-color);
 }
 
-
 @media (max-width: 950px) {
-
   /* .navbar-links {
     width: 100%;
   } */
-  
 }
 
 @media (min-width: 768px) {
-  
   .navbar-links {
     position: fixed;
     left: 0;
     right: 80%;
   }
 
-  
   .side-nav {
     padding: 0;
     margin: 0;
@@ -191,7 +242,6 @@ textarea:focus {
 }
 
 @media (max-width: 768px) {
-
   .side-nav {
     max-width: 96% !important;
     margin: 0 auto;
@@ -204,8 +254,7 @@ textarea:focus {
     text-align: center;
     width: 100%;
     max-width: 100%;
-
-    }
+  }
 
   .btn-1 {
     border-top-left-radius: 10px !important;
@@ -216,24 +265,14 @@ textarea:focus {
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
   }
-  .navbar-links a{
+  .navbar-links a {
     display: inline-block;
     margin: 0px !important;
-     border-radius: 0;
-/*
-    border: 3px solid transparent;
-    background-color: var(--main-color) !important;
-    color: white !important; */
-  
+    border-radius: 0;
   }
-
 }
 
-
-
-
 @media (max-width: 576px) {
-
   .posts-card {
     width: 95%;
   }
@@ -241,4 +280,4 @@ textarea:focus {
   .input-group {
     width: 85%;
   }
-}  
+}

@@ -27,30 +27,38 @@
         <div class="row justify-content">
             <nav class="col bg-white side-nav">
                 <div class="navbar-links mx-auto mt-5">
-                       <a class="btn bg-white mb-3 p-2 mt-3 btn-1" href="{% url 'blog:home' %}">Home</a>
-                       <a class="btn bg-white mb-3 p-2" href="{% url 'blog:home' %}">All Blogs</a>
-                       <a class="btn bg-white mb-3 p-2" href="{% url 'blog:bloggers' %}">All Bloggers</a>  
-                       <a class="btn bg-white mb-3 p-2" href="{% url 'blog:search' %}">Search</a>   
+                       <a class="btn bg-white mb-3 p-2 mt-3 btn-1 special-btn" href="{% url 'blog:home' %}">Home</a>
+                       <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:home' %}">All Blogs</a>
+                       <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:bloggers' %}">All Bloggers</a>  
+                       <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:search' %}">Search</a>   
                         {% if user.is_authenticated %} 
                             {% if user.is_blogger %}                               
-                                <a class="btn bg-white mb-3 p-2" href="{% url 'blog:new'%}">New</a>
+                                <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:new'%}">New</a>
                             {% endif %}                           
-                                <a class="btn bg-white mb-3 p-2" href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
-                                <a class="btn bg-white mb-3 p-2 btn-n" href="{% url 'accounts:logout' %}">Log out</a>     
+                                <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
+                                <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:logout' %}">Log out</a>     
                             {% else %}
-                                <a class="btn bg-white mb-3 p-2 btn-n" href="{% url 'accounts:login' %}">Log In</a>
+                                <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:login' %}">Log In</a>
                         {% endif %}
                 </div>
             </nav>
         
-            <main class="col-md-9 ml-md-auto mt-5 mx-2 mx-md-5">
-                {% block content %} {% endblock %}
+            <main class="col-md-9 ml-md-auto mt-5 mx-2 mx-md-5" id="barba-wrapper">
+                <div class="barba-container">
+                        {% block content %} {% endblock %}
+                </div>
             </main>
         </div>        
     </div>
 
 
-{% block javascript %}{% endblock %}
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js" type="text/javascript"></script>
+    <script>
+    Barba.Pjax.start();
+    </script> -->
+{% block javascript %}
+{% endblock %}
+
 </body>
 
 </html>
