@@ -8,14 +8,13 @@
     <button class='btn btn-dark'>Back</button>
 </a> -->
 
-<form method="post" novalidate class="bg-white p-5 mx-5 mb-5 comment-form">
-    <h4 class="mb-5">Post your comment for:
-        <a href="{% url 'blog:blog' post.id %}">{{ post.title }}</a>
-    </h4>   
-    {% csrf_token %} {% include 'blog/form.html' %}
-    <button type="submit" class="btn bg-white p-2 submit-btn">Post</button>
-</form>
-
+    <form method="post" novalidate class="bg-white p-5 mx-5 mb-5 comment-form">
+        <h4 class="mb-5">Post your comment for:
+            <a href="{% url 'blog:blog' post.id %}">{{ post.title }}</a>
+        </h4>   
+        {% csrf_token %} {% include 'blog/form.html' %}
+        <button type="submit" class="btn bg-white p-2 submit-btn">Post</button>
+    </form>
 
 
 {% endblock %}

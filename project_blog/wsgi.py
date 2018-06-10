@@ -8,13 +8,14 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 """
 
 import os, sys
+from django.core.wsgi import get_wsgi_application
+
 
 
 sys.path.append('./')
 sys.path.append('./env/lib/python3.5/site-packages')
 
 
-from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project_blog.settings")
 

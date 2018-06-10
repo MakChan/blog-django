@@ -3,6 +3,7 @@
 {% block content %} 
   
 {% if post %}
+
     <div class="p-5 bg-white post-card">
         <div class='post-title'><h3>{{post.title}}</h3></div>
         <div class="text-muted"> posted {{ post.created_at|naturaltime}} by 
@@ -44,6 +45,5 @@
 
 </div>
 {% endif %}
-
 
 {% endblock %}

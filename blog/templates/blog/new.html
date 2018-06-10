@@ -8,21 +8,12 @@
 
 {% block content %}
 
-<form method="post" novalidate class="bg-white p-5 mx-5 mb-5 post-form">
-    {% csrf_token %} {% include 'blog/form.html' %}
-    <button type="submit" class="btn bg-white p-2 submit-btn">Post</button>
-</form>
+    <form method="post" novalidate class="bg-white p-5 mx-5 mb-5 post-form">
+        {% csrf_token %} {% include 'blog/form.html' %}
+        <button type="submit" class="btn bg-white p-2 submit-btn">Post</button>
+    </form>
 
 
 
 {% endblock %}
 
-
-{% block javascript %}
-
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script>
-        var simplemde = new SimpleMDE();
-    </script>
-
-{% endblock %}
