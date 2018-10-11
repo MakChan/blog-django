@@ -34,11 +34,14 @@
                         {% if user.is_authenticated %} 
                             {% if user.is_blogger %}                               
                                 <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:new'%}">New</a>
-                            {% endif %}                           
                                 <a class="btn bg-white mb-3 p-2 special-btn" href="{% url 'blog:blogger' user.username %}">{{user.username}}</a>
-                                <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:logout' %}">Log out</a>     
                             {% else %}
-                                <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:login' %}">Log In</a>
+                                <a class="btn bg-white mb-3 p-2 special-btn" href="#">{{user.username}}</a>
+                            {% endif %}                           
+                            <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:logout' %}">Log out</a>     
+                        {% else %}
+                            <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:login' %}">Log In</a>
+                            <a class="btn bg-white mb-3 p-2 btn-n special-btn" href="{% url 'accounts:signup' %}">Sign Up</a>
                         {% endif %}
                 </div>
             </nav>
@@ -105,7 +108,6 @@
         const New = Barba.BaseView.extend({
             namespace: 'new-page', 
             onEnterCompleted: () => {
-
                 var simplemde = new SimpleMDE();
             }
 

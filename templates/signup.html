@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+
+
+<form method="post" class='bg-white p-5 mx-auto signup-form'>
+    {% csrf_token %}
+
+    {% for field in form %}
+    <p>
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% if field.help_text %}
+        <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+        {% endfor %}
+    </p>
+    {% endfor %}
+
+    <button class="btn btn-lg btn-block rounded-0" value="SignUp" type="submit">Sign Up</button>
+
+</form>
+
+
+{% endblock %}
